@@ -1,0 +1,45 @@
+<div data-ng-controller="DashboardController as vm">
+	<div class="row-responsive">
+		<div class="col-xs-12 col-sm-12 col-md-6">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title"><span class="glyphicon glyphicon-flash" aria-hidden="true"></span> Smart Control</h3>
+				</div>
+
+				<ul class="list-group">
+						<li class="list-group-item" data-ng-show="vm.fritzModel.deviceInfos === undefined">
+							<div class="text-center text-muted">:( no devices detected</div>
+						</li>
+
+					  <li class="list-group-item" data-ng-repeat="device in vm.fritzModel.deviceInfos.devicelist.device">
+					  	<h4 data-ng-class="device.present === 0 ? 'text-muted' : ''">
+					  		{{device.name}} <small data-ng-show="device.present === 0">not accessible</small>
+					  		<div class="pull-right" data-ng-show="device.switch">
+
+					  		<input bs-switch
+											 ng-model="device.switch.state"
+											 type="checkbox"
+											 switch-active="{{device.present === 1}}"
+											 switch-size="mini"
+											 switch-on-color="success"
+											 switch-off-color="default"
+											 ng-true-value="1"
+											 ng-false-value="0"
+											 ng-change="vm.powerSwitchClicked(device)">
+								</div>
+					  	</h4>
+					  	<div data-ng-show="device.present && device.temperature" class="small">
+					  		Temperature: {{device.temperature.celsius / 10}} °C
+					  	</div>
+					  	<div data-ng-show="device.present && device.powermeter" class="small">
+					  		Current power: {{device.powermeter.power / 1000}} W, Total power: {{device.powermeter.energy / 1000}} kWh
+					  	</div>
+					  	<div class="clearfix"></div>
+						</li>
+					</ul>
+			</div>
+
+			<pre data-ng-show="vm.debug">{{vm.fritzModel | json}}</pre>
+		</div>
+	</div>
+</div>

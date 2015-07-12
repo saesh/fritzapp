@@ -1,0 +1,18 @@
+{
+  "name": "fritzapp",
+  "version": "0.1.0",
+  "authors": "Sascha Hagedorn",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.4.2",
+    "angular-route": "~1.4.2",
+    "angular-bootstrap": "~0.13.0",
+    "ngstorage": "~0.3.6",
+    "bootstrap": "~3.3.5",
+    "bootstrap-switch": "~3.3.2",
+    "angular-bootstrap-switch": "~0.4.1"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.4.2"
+  }
+}

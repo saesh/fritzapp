@@ -11,11 +11,11 @@ node default {
       ensure => 'installed',
    }
 
-   package { 'libfontconfig',
+   package { 'libfontconfig':
       ensure => 'installed',
    }
 
-   package { 'libfontconfig-dev',
+   package { 'libfontconfig-dev':
       ensure => 'installed',
    }
 
